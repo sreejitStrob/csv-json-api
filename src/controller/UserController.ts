@@ -45,7 +45,7 @@ export class UserController {
                  WHEN (age) >= 20 and (age) <= 40 THEN '20-40'
                  WHEN (age) > 40 and (age) <= 60 THEN '40-60'
                  WHEN (age) > 60 THEN '> 60' 
-                 END as age_group,COUNT('age_group') as age_count, (select  COUNT(*) from user_t) as total,(COUNT('age_group') * 100) / (select  COUNT(*) from user_t) as distribution
+                 END as age_group,COUNT('age_group') as age_count,(COUNT('age_group') * 100) / (select  COUNT(*) from user_t) as distribution
                 from user_t group by age_group  HAVING COUNT('age_group') > 0;`);
                 console.table(rawData)
                 response.send(result);
